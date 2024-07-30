@@ -1,10 +1,13 @@
-#ifndef NICOBYN
-#define NICOBYN
-
-#include <stdio.h>
+#ifndef MAIN_H
+#define MAIN_H
 #include <stdarg.h>
-#include <unistd.h>
-
+#include <stdio.h>
+/**
+ * struct vtype - struct vtype
+ * @tp: tp
+ * @f: function
+ *
+ */
 int _putchar(char c);
 int _printf(const char *format, ...);
 int print_number(int n);
@@ -15,5 +18,4 @@ int rev_str(char *s);
 int rot13(char *point);
 int print_digit(int n);
 int _strlen(char *s);
-
-#endif
+#endif /* MAIN_H */
