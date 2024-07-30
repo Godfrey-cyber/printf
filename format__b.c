@@ -1,40 +1,37 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-/**
- * format_b - function to convert to unsigned integer to binary
- * @valist: taking in arguments
- * @buffer: values stored
- * @index: tracks the index position
- */
-void format_b(va_list valist, char *buffer, int *index)
-{
-	unsigned int n;
-	int i;
-	char *binaryvalues;
-	char *binary;
 
-	n = va_arg(valist, int);
-	binaryvalues = "01";
-	binary = malloc(33 * sizeof(char));
-	if (binary == NULL)
-		return;
-	if (n == 0)
+/**
+ * printf_binary - prints a binary number
+ * @num: number arguements
+ * @printed: the printed characters
+ * Return: printed charcaters
+ */
+
+int printf_binary(unsigned int num, int printed)
+{
+	int binary[32] = {0};
+	int i = 0;
+
+	if (num == 0)
 	{
-		buffer[*index] = '0';
-		*index += 1;
+		_putchar('0');
+		printed++;
+		return (printed);
 	}
-	else
+
+	while (num > 0)
 	{
-		for (i = 0; n != 0; i++)
-		{
-			binary[i] = binaryvalues[n % 2];
-			n /= 2;
-		}
-		for (i--; i >= 0; *index += 1, i--)
-		{
-			buffer[*index] = binary[i];
-		}
+		binary[i] = num % 2;
+		num /= 2;
+		i++;
 	}
-	free(binary);
+
+	while (i > 0)
+	{
+		i--;
+		_putchar('0' + binary[i]);
+		printed++;
+	}
+
+	return (printed);
 }
