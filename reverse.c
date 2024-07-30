@@ -1,20 +1,27 @@
 #include "main.h"
 
 /**
-* rev_str - a function that reverses the string
-* @s: the  string to be reversed
-* Return: count of characers that are printed printed
-*/
-int  rev_str(char *s)
+ * printf_reverse - prints a binary number
+ * @args: number of arguements
+ * @printed: the printed characters
+ * Return: printed charcaters
+ */
+
+int printf_reverse(va_list args, int printed)
 {
-	int x, y = 0;
+	char *str = va_arg(args, char *);
+	int len = 0, i;
 
-	while (s[y])
-		y++;
-
-	for (x = y - 1; x >= 0; x--)
+	while (str[len])
 	{
-		_putchar(s[x]);
+		len++;
 	}
-	return (y);
+
+	for (i = len - 1; i >= 0; i--)
+	{
+		_putchar(str[i]);
+		printed++;
+	}
+
+	return (printed);
 }
