@@ -40,7 +40,7 @@ int rot13(char *point)
 				break;
 			}
 		}
-		if (!flag)
+		if (!warn)
 			_putchar(point[x]);
 		warn = 0;
 		x++;
