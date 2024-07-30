@@ -10,7 +10,7 @@ int  rev_str(char *s)
 	int x, y = 0;
 
 	while (s[y])
-		j++;
+		y++;
 
 	for (x = y - 1; x >= 0; x--)
 	{
