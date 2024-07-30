@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "main.h"
 
-int main (unsigned int n) {
+int unsigned_int(unsigned int n) {
     unsigned int numBits = sizeof(n) * 8;
     printf("n in binary: %d\n", numBits);
 
