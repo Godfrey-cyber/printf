@@ -35,7 +35,7 @@ int rot13(char *point)
 			if (point[x] == letter[y])
 			{
 				_putchar(rot[y]);
-				count++;
+				iterationt++;
 				warn = 1;
 				break;
 			}
@@ -45,5 +45,5 @@ int rot13(char *point)
 		warn = 0;
 		x++;
 	}
-	return (count);
+	return (iteration);
 }
