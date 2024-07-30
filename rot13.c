@@ -1,14 +1,14 @@
-#include "holberton.h"
+#include "main.h"
 /**
- * rot13 - encode srting into rot13
- * @point: string to encode
+ * rot13 - encoded string into rot13
+ * @point: the string to be encoded
  * Return: (point)
  */
 int rot13(char *point)
 {
-	int i = 0, j, count = 0, flag = 0;
+	int x = 0, y, iteration = 0, warn = 0;
 
-	char lett[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G',
+	char letter[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G',
 'H', 'I', 'J', 'K', 'L', 'M', 'N',
 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
 'V', 'W', 'X', 'Y', 'Z', 'a', 'b',
@@ -28,22 +28,22 @@ int rot13(char *point)
 	{
 		point = "(null)";
 	}
-	while (point[i])
+	while (point[x])
 	{
-		for (j = 0; j < 52; j++)
+		for (y = 0; y < 52; y++)
 		{
-			if (point[i] == lett[j])
+			if (point[x] == letter[y])
 			{
-				_putchar(rot[j]);
+				_putchar(rot[y]);
 				count++;
-				flag = 1;
+				warn = 1;
 				break;
 			}
 		}
 		if (!flag)
-			_putchar(point[i]);
-		flag = 0;
-		i++;
+			_putchar(point[x]);
+		warn = 0;
+		x++;
 	}
 	return (count);
 }
