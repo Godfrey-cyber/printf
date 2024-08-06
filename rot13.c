@@ -1,49 +1,41 @@
 #include "main.h"
-/**
- * rot13 - encoded string into rot13
- * @point: the string to be encoded
- * Return: (point)
- */
-int rot13(char *point)
-{
-	int x = 0, y, iteration = 0, warn = 0;
 
-	char letter[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G',
-'H', 'I', 'J', 'K', 'L', 'M', 'N',
-'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-'V', 'W', 'X', 'Y', 'Z', 'a', 'b',
-'c', 'd', 'e', 'f', 'g', 'h', 'i',
-'j', 'k', 'l', 'm', 'n', 'o', 'p',
-'q', 'r', 's', 't', 'u', 'v', 'w',
-'x', 'y', 'z'};
-	char rot[] = {'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-'U', 'V', 'W', 'X', 'Y', 'Z', 'A',
-'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-'J', 'K', 'L', 'M', 'n', 'o', 'p',
-'q', 'r', 's', 't', 'u', 'v', 'w',
-'x', 'y', 'z', 'a', 'b', 'c', 'd',
-'e', 'f', 'g', 'h', 'i', 'j', 'k',
-'l', 'm'};
-	if (!point)
+/**
+ * print_rot - writes the str in ROT13
+ * @arguments: input string
+ * @buf: buffer pointer
+ * @ibuf: index for buffer pointer
+ * Return: number of chars printed.
+ */
+
+int print_rot(va_list arguments, char *buf, unsigned int ibuf)
+{
+	char alf[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char rot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *str;
+	unsigned int i, j, k;
+	char nill[] = "(avyy)";
+
+	str = va_arg(arguments, char *);
+	if (str == NULL)
 	{
-		point = "(null)";
+		for (i = 0; nill[i]; i++)
+			ibuf = handl_buf(buf, nill[i], ibuf);
+		return (6);
 	}
-	while (point[x])
+	for (i = 0; str[i]; i++)
 	{
-		for (y = 0; y < 52; y++)
+		for (k = j = 0; alf[j]; j++)
 		{
-			if (point[x] == letter[y])
+			if (str[i] == alf[j])
 			{
-				_putchar(rot[y]);
-				iteration++;
-				warn = 1;
+				k = 1;
+				ibuf = handl_buf(buf, rot[j], ibuf);
 				break;
 			}
 		}
-		if (!warn)
-			_putchar(point[x]);
-		warn = 0;
-		x++;
+		if (k == 0)
+			ibuf = handl_buf(buf, str[i], ibuf);
 	}
-	return (iteration);
+	return (i);
 }
