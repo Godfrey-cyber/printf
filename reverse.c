@@ -1,27 +1,32 @@
 #include "main.h"
 
 /**
- * printf_reverse - prints a binary number
- * @args: number of arguements
- * @printed: the printed characters
- * Return: printed charcaters
+ * print_rev - writes the str in reverse
+ * @arguments: input string
+ * @buf: buffer pointer
+ * @ibuf: index for buffer pointer
+ * Return: number of chars printed.
  */
-
-int printf_reverse(va_list args, int printed)
+int print_rev(va_list arguments, char *buf, unsigned int ibuf)
 {
-	char *str = va_arg(args, char *);
-	int len = 0, i;
+	char *str;
+	unsigned int i;
+	int j = 0;
+	char nill[] = "(llun)";
 
-	while (str[len])
+	str = va_arg(arguments, char *);
+	if (str == NULL)
 	{
-		len++;
+		for (i = 0; nill[i]; i++)
+			ibuf = handl_buf(buf, nill[i], ibuf);
+		return (6);
 	}
-
-	for (i = len - 1; i >= 0; i--)
+	for (i = 0; str[i]; i++)
+		;
+	j = i - 1;
+	for (; j >= 0; j--)
 	{
-		_putchar(str[i]);
-		printed++;
+		ibuf = handl_buf(buf, str[j], ibuf);
 	}
-
-	return (printed);
+	return (i);
 }
