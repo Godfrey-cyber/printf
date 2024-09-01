@@ -26,17 +26,17 @@ int _printf(const char *format, ...)
             i++;
             switch (format[i])
             {
-                case 'c':  // Character
+                case 'c':
                     count += write(1, &(char){(char)va_arg(args, int)}, 1);
                     break;
-                case 's':  // String
+		case 's':
                     str = va_arg(args, char *);
                     if (str == NULL)
                         str = "(null)";
                     while (*str)
                         count += write(1, str++, 1);
                     break;
-                case '%':  // Percent sign
+                case '%':
                     count += write(1, "%", 1);
                     break;
                 default:
