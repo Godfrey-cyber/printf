@@ -1,25 +1,28 @@
 #include <stdarg.h>
-#include <stdio.h>
 #include <unistd.h>
 
 /**
- * _printf - Custom implementation of printf.
- * @format: The format string containing the directives.
+ * _printf - Custom implementation of printf function.
+ * @format: Format string containing the characters and the specifiers.
  *
- * Return: The number of characters printed (excluding null byte).
+ * Description: This function produces output according to a format.
+ * It handles the following conversion specifiers: c, s, and %.
+ *
+ * Return: The number of characters printed (excluding the null byte).
  */
 int _printf(const char *format, ...)
 {
     va_list args;
     int i = 0, count = 0;
     char *str;
+    char ch;
 
     if (format == NULL)
         return (-1);
 
     va_start(args, format);
 
-    while (format[i])
+    while (format && format[i])
     {
         if (format[i] == '%')
         {
@@ -27,14 +30,18 @@ int _printf(const char *format, ...)
             switch (format[i])
             {
                 case 'c':
-                    count += write(1, &(char){(char)va_arg(args, int)}, 1);
+                    ch = (char)va_arg(args, int);
+                    count += write(1, &ch, 1);
                     break;
-		case 's':
+                case 's':
                     str = va_arg(args, char *);
                     if (str == NULL)
                         str = "(null)";
                     while (*str)
-                        count += write(1, str++, 1);
+                    {
+                        count += write(1, str, 1);
+                        str++;
+                    }
                     break;
                 case '%':
                     count += write(1, "%", 1);
