@@ -42,3 +42,4 @@ Here:
 	}
 	va_end(args);
 	return (str_len);
+}
