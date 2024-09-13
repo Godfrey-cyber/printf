@@ -1,14 +1,14 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * printf_hex_aux - prints an hexgecimal number.
  * @num: arguments.
  * Return: counter.
  */
-int printf_hex_aux(unsigned long int num)
+/*int printf_hex_aux(unsigned long int num)
 {
 	long int i;
-	long int *array;
+glong int *array;
 	long int counter = 0;
 	unsigned long int temp = num;
 
@@ -33,4 +33,4 @@ int printf_hex_aux(unsigned long int num)
 	}
 	free(array);
 	return (counter);
-}
+}*/

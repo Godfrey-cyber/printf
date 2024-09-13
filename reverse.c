@@ -7,10 +7,10 @@
  * @ibuf: index for buffer pointer
  * Return: number of chars printed.
  */
-int print_rev(va_list arguments, char *buf, unsigned int ibuf)
+/*int print_rev(va_list arguments, char *buf, unsigned int ibuf)
 {
 	char *str;
-	unsigned int i;
+gunsigned int i;
 	int j = 0;
 	char nill[] = "(llun)";
 
@@ -29,4 +29,4 @@ int print_rev(va_list arguments, char *buf, unsigned int ibuf)
 		ibuf = handl_buf(buf, str[j], ibuf);
 	}
 	return (i);
-}
+}*/

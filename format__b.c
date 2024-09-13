@@ -7,7 +7,7 @@
  * Return: printed charcaters
  */
 
-int printf_binary(unsigned int num, int printed)
+/*int printf_binary(unsigned int num, int printed)
 {
 	int binary[32] = {0};
 	int i = 0;
@@ -34,4 +34,4 @@ int printf_binary(unsigned int num, int printed)
 	}
 
 	return (printed);
-}
+}*/

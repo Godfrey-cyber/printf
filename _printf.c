@@ -1,45 +1,44 @@
 #include "main.h"
 /**
- * _printf - is a function that selects the correct function to print.
+ * _printf - this function picks the right function to print.
  * @format: identifier to look for.
- * Return: the length of the string.
+ * Return: the sive of the string.
  */
 int _printf(const char * const format, ...)
 {
-	convert_match m[] = {
-		{"%s", printf_string}, {"%c", printf_char},
-		{"%%", printf_37},
-		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
-		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
-		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
-		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
+	convert_h r[] = {
+		{"%s", printf_strn}, {"%c", printf_char},
+		{"%%", printf_num_37},
+		{"%i", printf_integer}, {"%d", printf_decimal}, {"%r", printf_streverse},
+		{"%R", printf_rot_13}, {"%b", printf_binary}, {"%u", printf_unsgd},
+		{"%o", printf_octag}, {"%x", printf_hexadec}, {"%X", printf_HEXADEC},
+		{"%S", printf_ex_str}, {"%p", printf_pntr}
 	};
 
 	va_list args;
-	int i = 0, j, len = 0;
+	int x = 0, y, str_len = 0;
 
 	va_start(args, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
 Here:
-	while (format[i] != '\0')
+	while (format[x] != '\0')
 	{
-		j = 13;
-		while (j >= 0)
+		y = 13;
+		while (y >= 0)
 		{
-			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+			if (r[y].id[0] == format[x] && r[y].id[1] == format[x + 1])
 			{
-				len += m[j].f(args);
-				i = i + 2;
+				str_len += r[y].f(args);
+				x = x + 2;
 				goto Here;
 			}
-			j--;
+			y--;
 		}
-		_putchar(format[i]);
-		len++;
-		i++;
+		_putchar(format[x]);
+		str_len++;
+		x++;
 	}
 	va_end(args);
-	return (len);
-}
+	return (str_len);
